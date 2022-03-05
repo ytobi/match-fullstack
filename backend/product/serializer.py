@@ -23,5 +23,5 @@ class ProductBuySerializer(serializers.Serializer):
             raise serializers.ValidationError('Product does not exits')
         # validate if there are enough products to buy
         if Product.objects.get(id=productId).amountAvailable < int(amount):
-            raise serializers.ValidationError('Not enough product to purchace')   
+            raise serializers.ValidationError('Not enough products to purchase')   
         return data

@@ -25,6 +25,7 @@ class ProductCreateOrList(generics.CreateAPIView, generics.ListAPIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED )
         return Response({**serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
+
 class PeroductDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

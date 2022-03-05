@@ -4,14 +4,10 @@ import math
 from django.utils import timezone
 from user.models import UserRole
 
-EXAMPLE_DOMAIN = "example.com"
 DEFAULT_STRING_LEGNTH = 10
-DEFAULT_PHONE_LEGNTH = 9
 MAX_INT = 2147483647
 MIN_INT = -MAX_INT+1
 MAX_BIGINT = 9223372036854775807
-MIN_BIGINT = -MAX_BIGINT+1
-
 
 def random_string(length=DEFAULT_STRING_LEGNTH, letters=string.ascii_letters):
     return "".join(random.choice(letters) for i in range(0, length))
