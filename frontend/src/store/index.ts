@@ -15,8 +15,6 @@ export default createStore({
     countProduct: 0,
     prevProducts: '',
     nextProducts: '',
-    signIn: true,
-    signUp: false,
     userAuth: undefined,
     totalAmountInCart: 0,
     totalProductsInCart: 0
@@ -59,7 +57,7 @@ export default createStore({
       }
       let total = 0
       state.cart.forEach( (product) => {
-          total = product.amount * product.cost
+          total += product.amount * product.cost
       });
       state.totalAmountInCart = total
     },
@@ -74,16 +72,14 @@ export default createStore({
 
       let total = 0
       state.cart.forEach( (product) => {
-          total = product.amount * product.cost
+          total += product.amount * product.cost
       });
       state.totalAmountInCart = total
     },
-    showLogin (state) {
-      state.signIn = false
-      state.signUp = true
-    },
     clearCart (state) {
       state.cart = []
+      state.totalAmountInCart = 0
+      state.totalProductsInCart = 0
     },
   },
   actions: {

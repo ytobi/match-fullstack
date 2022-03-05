@@ -5,7 +5,7 @@
   <td> 
     <input @change="showSaveBtn" type="number" class="form-control" v-model="data.cost">
   </td>
-  <td >
+  <td>
     <div class="d-flex">
       <span class="w-50 text-end me-2"> 
         <input @change="showSaveBtn" type="number" class="form-control" v-model="data.amountAvailable">

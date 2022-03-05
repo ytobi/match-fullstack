@@ -27,7 +27,7 @@
     </div>
     <div class="w-100 text-start d-flex justify-content-between">
       <span class="fw-bold ms-2"> Total: {{ $store.state.totalAmountInCart }} USD </span>
-      <button type="button" class="btn btn-outline-success me-3" @click="$store.dispatch('buy')">Check out</button>
+      <button type="button" class="btn btn-outline-success me-3" @click="$store.dispatch('buy')">Checkout</button>
     </div>
   </div>
 </template>

@@ -4,7 +4,7 @@
   <td @mouseenter="showAddToChart" @mouseleave="hideAddToChart" v-if="this.inCart !== true" >
     <div class="d-flex">
       <span class="w-50 text-end me-2"> {{ data.amountAvailable }} </span>
-      <button @click="$store.commit('addProductToCart', data)" type="button" class="btn btn-sm btn-outline-secondary align-item-end" width="10" :style="{'display': displayAddToCart}" >Add to Cart</button>
+      <button v-if="$store.state.user?.role != 'Seller'" @click="$store.commit('addProductToCart', data)" type="button" class="btn btn-sm btn-outline-secondary align-item-end" width="10" :style="{'display': displayAddToCart}" >Add to Cart</button>
     </div>
   </td>
 </template>

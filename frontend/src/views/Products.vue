@@ -1,6 +1,6 @@
 <template>
   <div class="products w-100">
-    <div style="height: calc(100% - 35px); overflow-x: hidden; overflow-y: scroll;">
+    <div style="height: calc(100% - 35px); overflow-x: hidden; overflow-y: auto;">
       <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -39,6 +39,9 @@ import Product from '@/components/Product.vue'
     return {
       currentPage: 1
     }
+  },
+  mounted () {
+    this.$store.dispatch('getProducts')
   }
 })
 export default class Products extends Vue {}
