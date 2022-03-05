@@ -56,8 +56,7 @@ class UserBuy(APIView):
         user = User.objects.get(id=request.user.id)
         serializer = UserBuySerializer(data={**request.data, 'user': request.user.id})
         if serializer.is_valid():
-            user.deposit = serializer.data['balance']
-            user.save()
+            serializer.save(user)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

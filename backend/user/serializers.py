@@ -69,7 +69,8 @@ class UserBuySerializer(serializers.Serializer):
         if not products_to_buy.is_valid():
             raise serializers.ValidationError(products_to_buy.errors)
         # Validate if user has enough balance to pay
-        if self.cal_totalAmountSpent(data) >= self.cal_balance(data):
+
+        if self.cal_balance(data) < 0:
             raise serializers.ValidationError("You don't have enough balance to purchase")
         return data
 
@@ -96,5 +97,12 @@ class UserBuySerializer(serializers.Serializer):
         user = User.objects.get(id=data['user'])
         return user.deposit - self.cal_totalAmountSpent(data)
 
-    def save(self, **kwargs):
-        pass
+    def save(self, user, **kwargs):
+        for product in self.validated_data['products']:
+            productId = product['productId']
+            amount = int(product['amount'])
+            prdt = Product.objects.get(id=productId)
+            prdt.amountAvailable -= amount
+            prdt.save()
+        user.deposit = self.data['balance']
+        user.save()
